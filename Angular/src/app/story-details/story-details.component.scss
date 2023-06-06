@@ -1,0 +1,117 @@
+
+body{
+  display: flex;
+}
+.komentar{
+  height: 100%;
+  width: 100%;
+  margin-top: 0%;
+}
+#nazad{
+  height:2%;
+  width:10%;
+  font-weight: bold;
+  border:none;
+  background-color:inherit;
+  font-size:40px;
+  color:white;
+  box-shadow: 5px 5px 5px 5px cornflowerblue;
+}
+.button-34 {
+  background: #FFFFFF;
+  border-radius: 999px;
+  box-shadow: #4169E1 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #4169E1;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+.back{
+  background-color: #99C1D9;
+  padding: 20px;
+  height:100%;
+  border-radius: 30px;
+}
+h1{
+  color: white;
+  font-weight: bold;
+  font-family: Montserrat;
+  text-align: center;
+}
+h3{
+  font-weight: bold;
+  color: white;
+  font-family: Montserrat;
+}
+
+.opis{
+  color: white;
+  font-family: Montserrat;
+  max-width: 40%;
+  height: 100%;
+  background-color:  rgba(205,205,205,0.5);
+  padding: 2%;
+  border-radius: 30px;
+  margin-bottom: 10%;
+}
+.opis p{
+  text-align: center;
+}
+.detalji{
+  background-color: rgba(205,205,205,0.5);
+  border-radius: 30px;
+  max-width: 60%;
+  height: 100%;
+  margin-left: 3%;
+  padding: 2%;
+  margin-bottom: 10%;
+}
+.detalji h4{
+  color: white;
+  font-family: Montserrat;
+}
+.pomjeri{
+  display: flex;
+}
+.dugme{
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  margin-left: 70%;
+  padding: 2%;
+  width: fit-content;
+}
+
+
+.progress {
+  height: 5%;
+  font-size:15px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  background-color: #4CAF50;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+
+
+}
+
+

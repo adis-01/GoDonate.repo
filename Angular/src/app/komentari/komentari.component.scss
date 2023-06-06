@@ -1,0 +1,72 @@
+.profilna{
+  width: 8%;
+  margin-right: 2%;
+}
+.lajkovi button{
+  border: none;
+  background-color: white;
+}
+.button-34 {
+  background: #FFFFFF;
+  border-radius: 999px;
+  box-shadow: #4169E1 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #4169E1;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+  font-weight: bold;
+  justify-content: center;
+  border-radius: 50%;
+  width:7%;
+}
+#nazad{
+  height:2%;
+  width:10%;
+  font-weight: bold;
+  border:none;
+  background-color:inherit;
+  font-size:40px;
+  color:navy;
+  box-shadow: 5px 5px 5px 5px cornflowerblue;
+  margin-bottom:1%;
+  color:blueviolet;
+}
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+#komentar{
+  width: 100%;
+  font-size: 20px;
+  border-radius: 30px;
+  padding: 2%;
+}
+.dodavanjeKomentara{
+  padding: 3%;
+  margin-bottom: 1%;
+}
+.sadrzaj{
+  width: 100%;
+}

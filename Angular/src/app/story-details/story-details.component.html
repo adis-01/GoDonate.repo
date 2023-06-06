@@ -1,0 +1,38 @@
+<div *ngFor="let x of podaciPrica">
+  <div class="back">
+    <button class="button-34" style="font-size: 25px" (click)="vratiNazad()">←</button>
+    <div class="gornjiDio">
+      <h1>{{x.naslov}}</h1>
+    </div>
+    <h3> Read our full story </h3>
+    <div class="pomjeri">
+    <div class="opis">
+      <p style="width: 100%; text-transform: uppercase;">Created by <b>{{x.imePrezime}}</b></p><hr style="border: 2px solid white; color:white">
+      <img src="{{getSliku(x.id)}}" style="height: 50%; width: 100%"><br><br>
+      <h4 style="text-align: center; margin-top:2%; text-transform: uppercase;  font-weight: bold">Description:</h4>
+      <p style="width: 100%">{{x.opis}}</p>
+    </div>
+    <div class="detalji">
+      <h4>We will need <b>{{x.novcaniCilj}}$</b>  to make our story happen.</h4>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" [style.width.%]="percentageComplete">
+          {{percentageComplete}}%
+        </div>
+      </div>
+      <br>
+      <h4>You can find us in <b>{{x.lokacija}}</b></h4>
+      <img src="https://joomly.net/frontend/web/images/googlemap/map.png" style="height: 50%; width: 100%">
+      <br> <br>
+
+      <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik && informacije().autentifikacijaToken.korisnickinalog.id!=x.korisnik_id" type="submit" class="dugme" style="border-radius: 30px; border: none; font-weight:  bold; color: white; background-color:#EE6C4DFF " (click)="openDonation(x)"> DONATE NOW!</button> <br><br>
+      <button type="submit" class="dugme" style="border-radius: 30px; border: none; font-weight:  bold; color: white; background-color:#FF605C "
+              *ngIf="informacije().autentifikacijaToken.korisnickinalog.isAdmin"
+              (click)="obrisiPricu(x.id)">Delete story</button>
+    </div>
+  </div>
+    <div class="komentar">
+      <button type="click" class="cta" style="border-radius: 30px; border: none; color: white; background-color: cornflowerblue; width: 60%; margin-left:20%;margin-right: 20% ; font-size: 20px; margin-bottom: 5%" (click)="otvoriKomentare()"> 💬 View comments ({{brojKomentara}}) </button>
+    </div>
+</div>
+</div>
+

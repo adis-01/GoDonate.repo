@@ -1,0 +1,166 @@
+<div *ngIf="!signal" class="obavijest">
+
+</div>
+<div class="pomjeri">
+<div *ngIf="odabranaPrica==null" class="kontejner">
+<h1 *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik">Stories opened for donations</h1>
+<h1 *ngIf="informacije().autentifikacijaToken.korisnickinalog.isAdmin">Stories review</h1>
+  <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik && this.brojAktivnih<5" type="button" class="btn btn-dark btn-lg" style="width:30%; height:20%; margin:2%; color: white; background-color: #EE6C4D; border: none; border-radius: 30px; margin-left:60% " (click)="novaPrica()" >Add your story</button>
+<br> <br>
+  <div class="dugmad">
+  <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik" id="prvi" (click)="preuzmiTudje()" style="border: none; border-radius:30px; color: black; background-color: #99C1D9; font-weight: bold; ">Other stories</button>
+  <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik" id="drugi" (click)="preuzmiMojeAktivne()" style="border: none; border-radius:30px; color: black; background-color: #99C1D9; float: right; font-weight: bold">My stories</button>
+  </div>
+
+  <div *ngIf="otvoriTudje">
+  <div *ngFor="let x of prica_tudja.price" class="kartica">
+    <img src="{{getSliku(x)}}" style="max-height:100%; max-width:20%; float:left; margin:3%">
+    <h3>{{x.naslov}}</h3>
+    <h4>GOAL {{x.novcani_cilj}} $</h4>
+   <a class="btn btn-dark" (click)="openDetails(x)" style="margin-left:77%; margin-bottom: 1%; border-radius: 30px; color: white; background-color: #EE6C4D; border: none;font-size: 20px"> Details</a>
+    <hr>
+  </div>
+    </div>
+
+  <div *ngIf="otvoriMoje" style="width: 100%">
+    <div class="aktivne">
+      <button id="aktivnePrice" style="margin-right:1%; border-right:2px solid white; color:white" (click)="preuzmiMojeAktivne()">Active stories</button>
+      <button id="neaktivnePrice" style="color:black" (click)="preuzmiMojeNeaktivne()">Finished stories</button>
+    </div>
+    <div *ngIf="prica_mojaAktivna!=null">
+    <div *ngFor="let x of prica_mojaAktivna" class="kartica">
+      <img src="{{getSliku(x)}}" style="max-height:100%; max-width:20%; float:left; margin:3%">
+      <h3>{{x.naslov}}</h3>
+      <h4>GOAL {{x.novcani_cilj}} $</h4>
+      <a class="btn btn-dark" (click)="openDetails(x)" style="margin-left:80%; margin-bottom: 1%; border-radius: 30px; color: white; background-color: #EE6C4D; border: none;font-size: 20px"> Details</a>
+      <hr>
+    </div>
+    </div>
+    <div *ngIf="prica_mojaNeaktivna!=null">
+    <div *ngFor="let x of prica_mojaNeaktivna" class="kartica">
+      <img src="{{getSliku(x)}}" style="max-height:100%; max-width:20%; float:left; margin:3%">
+      <h3>{{x.naslov}}</h3>
+      <h4>GOAL {{x.novcani_cilj}} $</h4>
+      <a class="btn btn-dark" (click)="openDetails(x)" style="margin-left:80%; margin-bottom: 1%; border-radius: 30px; color: white; background-color: #EE6C4D; border: none;font-size: 20px"> Details</a>
+      <hr>
+    </div>
+      </div>
+  </div>
+
+
+<br> <br>
+  <div style="display:inline-block; width:100%; height:100%">
+    <div style="width:100%">
+      <button type="button" class="btn btn-dark btn-lg" style="background-color: #EE6C4D; color: white; border-radius: 30px; border:none"
+              *ngIf="trenutnaStranica > 1" (click)="prethodnaStranica()">Previous</button>
+      <button type="button" class="btn btn-dark btn-lg" style="background-color: #EE6C4D; color: white; border-radius: 30px; border:none; float: right"
+              *ngIf="trenutnaStranica < totalPages && totalPages>1" (click)="sljedecaStranica()">Next</button>
+    </div>
+  </div>
+</div>
+
+  <div *ngIf="odabranaPrica==null" class="topDonacije">
+    <h1 style="color: goldenrod; margin-bottom: 5%">Top donators</h1>
+   <hr style="border: 2px solid black; color: black ">
+    <div  *ngIf="prviDonator!=null" class="kartica">
+      <img src="/assets/Slike/zlatna.JPG" style="width: 30%; height: 50%; padding: 3%; margin-right: 35%; margin-left: 35% ">
+      <h3>{{prviDonator.fullName}}</h3>
+      <h4>Donated {{prviDonator.totalDonations}} $</h4>
+      <hr>
+    </div>
+
+    <div *ngIf="drugiDonator!=null" class="kartica">
+      <img src="/assets/Slike/srebrna.JPG" style="width: 30%; height: 50%; padding: 3%; margin-right: 35%; margin-left: 35% ">
+      <h3>{{drugiDonator.fullName}}</h3>
+      <h4>Donated {{drugiDonator.totalDonations}} $</h4>
+      <hr>
+    </div>
+
+    <div *ngIf="treciDonator!=null" class="kartica">
+      <img src="/assets/Slike/bronza.JPG" style="width: 30%; height: 50%; padding: 3%; margin-right: 35%; margin-left: 35% ">
+      <h3>{{treciDonator.fullName}}</h3>
+      <h4>Donated {{treciDonator.totalDonations}} $</h4>
+      <hr>
+    </div>
+  </div>
+
+</div>
+
+  <div *ngIf="odabranaPrica!=null" class="dodavanjePrice">
+    <form [formGroup]="validiraj" (ngSubmit)="SaveDugme()">
+    <div style="display: flex; flex-direction: row; width: 100%">
+    <p style=" font-weight: bold; color: white; font-size: 20px">New story</p>
+    <br> <br>
+    <button style="color: white;margin-left: 80% " type="button" class="btn-close" aria-label="Close" (click)="odabranaPrica=null"></button>
+    </div>
+
+    <label>Title</label>
+      <input type="text" formControlName="naslov" placeholder="Title">
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['naslov'].invalid && (validiraj.controls['naslov'].dirty || validiraj.controls['naslov'].touched)">
+        <div *ngIf="validiraj.controls['naslov'].errors.required">
+          Title is required.
+        </div>
+        <div *ngIf="validiraj.controls['naslov'].errors.pattern">
+          You can only type in letters.
+        </div>
+      </div>
+     <br>
+
+      <label>Description</label>
+      <input type="text" formControlName="opis" placeholder="Description">
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['opis'].invalid && (validiraj.controls['opis'].dirty || validiraj.controls['opis'].touched)">
+        <div *ngIf="validiraj.controls['opis'].errors.required">
+          Description is required.
+        </div>
+        <div *ngIf="validiraj.controls['opis'].errors.pattern">
+          You can only type in letters.
+        </div>
+      </div>
+   <br>
+
+      <label for="formFile" class="form-label" style="font-weight: bold">Upload your picture</label>
+      <input class="form-control" formControlName="slika" type="file" id="formFile" accept="image/*" (change)="generisiPreview($event)">
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['slika'].invalid && (validiraj.controls['slika'].dirty || validiraj.controls['slika'].touched)">
+        <div *ngIf="validiraj.controls['slika'].errors.required">
+          Image for story is required.
+        </div>
+      </div>
+   <br>
+
+      <label>Money goal</label>
+      <input type="number" formControlName="novcani_cilj" placeholder="eg. 254">
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['novcani_cilj'].invalid && (validiraj.controls['novcani_cilj'].dirty || validiraj.controls['novcani_cilj'].touched)">
+        <div *ngIf="validiraj.controls['novcani_cilj'].errors.required">
+          Money goal is required.
+        </div>
+      </div>
+<br>
+
+      <label>Location</label>
+      <input type="text" formControlName="lokacija" placeholder="eg. Mostar">
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['lokacija'].invalid && (validiraj.controls['lokacija'].dirty || validiraj.controls['lokacija'].touched)">
+        <div *ngIf="validiraj.controls['lokacija'].errors.required">
+          Location is required.
+        </div>
+        <div *ngIf="validiraj.controls['lokacija'].errors.pattern">
+          You can only type in letters.
+        </div>
+      </div>
+  <br>
+
+      <label>Category</label>
+      <select formControlName="kategorija_id" style="border-radius: 30px; width: 100%; height: 15%" [(ngModel)]="odabranaPrica.kategorija_id"  >
+        <option *ngFor="let x of kategorijaPodaci" [value]="x.id">{{x.naziv}}</option>
+      </select>
+      <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['kategorija_id'].invalid && (validiraj.controls['kategorija_id'].dirty || validiraj.controls['kategorija_id'].touched)">
+        <div *ngIf="validiraj.controls['kategorija_id'].errors.required">
+          Category is required.
+        </div>
+      </div>
+     <br>
+      <button type="submit" class="btn btn-dark btn-lg" style="border-radius: 30px; border: none; color: white; background-color: #EE6C4D; font-size: 20px; margin-left: 40%; margin-right: 40%; width: 20%; margin-top: 2%">Save </button>
+    </form>
+  </div>
+
+
+<div *ngIf="brojAktivnih>=5" style="color:red;background-color:whitesmoke;width:100%; border:1px solid black; border-radius: 30px; font-weight: bold; font-size:18px; padding:2%">You can not add another story because you already have 5 active ones. Give the others opportunity to participate.</div>

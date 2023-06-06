@@ -1,0 +1,39 @@
+header {
+  background: #99C1D9;
+  border-radius: 30px;
+  margin: 2% 4% 0 4%;
+
+
+  .logo {
+    font-weight: bold;
+    color: #E0FBFC;
+    font-size: 25px;
+    text-shadow: 0 0 3px #FF0000;
+  }
+
+  nav {
+    justify-self: right;
+
+    ul {
+      list-style-type: none;
+      margin: 0; padding: 0;
+
+      li {
+        float: left;
+        font-size: 25px;
+
+        a {
+          padding: 1.5em;
+          text-transform: uppercase;
+          font-size: .8em;
+
+          &:hover {
+            font-size: 20px;
+            text-shadow: 0 0 3px #FF0000;
+
+          }
+        }
+      }
+    }
+  }
+}

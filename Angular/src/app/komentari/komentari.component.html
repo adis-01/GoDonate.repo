@@ -1,0 +1,52 @@
+
+<button class="button-34" style="font-size: 25px" (click)="vratiNazad()">←</button>
+<br>
+
+<div *ngFor="let x of komentariPodaci.komentari" style="border: 2px solid black; margin-top: 2%; margin-bottom: 2%; border-radius: 30px; padding: 2%; background-color: white">
+
+  <div class="prvi" style="width: 100%">
+    <img class="profilna" src="{{getSlika(x.korisnikID)}}">
+    <div class="imeDatum" style="width: 90%; float: right">
+      <p>{{x.napisaoIme}}</p>
+      <!-- datum-->
+    </div>
+
+  </div>
+  <div class="sadrzaj">
+    <p>{{x.sadrzajKomentara}}</p>
+  </div>
+  <hr>
+  <div class="lajkovi">
+  <button style="color: green" (click)="lajkaj(x.id)" >↑ {{x.brojLajkova}}</button>
+    &nbsp;
+    <button style="color: red" (click)="dislajkaj(x.id)">↓ {{x.brojDislajkova}}</button>
+    <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik" style="color: orange; float: right">Report</button>
+    <button *ngIf="informacije().autentifikacijaToken.korisnickinalog.isAdmin" style="color: red; float: right" (click)="obrisiKomentar(x.id)">Delete</button>
+  </div>
+</div>
+<br>
+
+
+<div *ngIf="informacije().autentifikacijaToken.korisnickinalog.isKorisnik" class="dodavanjeKomentara" style=" border-radius:7px; border-bottom: 1px solid black; border-top: 1px solid black">
+  <form [formGroup]="validiraj" (ngSubmit)="dodajKomentar()" class="row g-3" >
+  <textarea id="sadrzaj" formControlName="sadrzaj" placeholder="Add your comment"></textarea>
+    <div style="color:darkred; font-weight: bold" *ngIf="validiraj.controls['sadrzaj'].invalid && (validiraj.controls['sadrzaj'].dirty || validiraj.controls['sadrzaj'].touched)">
+      <div *ngIf="validiraj.controls['sadrzaj'].errors.required">
+        You need to type something in for submit.
+      </div>
+    </div>
+  <button  style="background-color: #EE6C4D; color: white; border-radius: 30px; border:none; margin-left: 70%; width: 30%; margin-top: 2%; font-size: 17px">COMMENT</button>
+  </form>
+</div>
+
+
+<div style="display:inline-block; width:100%; height:100%">
+  <div style="width:100%">
+    <button type="button" class="btn btn-dark btn-lg" style="background-color: #EE6C4D; color: white; border-radius: 30px; border:none"
+            *ngIf="trenutnaStranica > 1" (click)="prethodna()">Previous</button>
+    <button type="button" class="btn btn-dark btn-lg" style="background-color: #EE6C4D; color: white; border-radius: 30px; border:none; float: right"
+            *ngIf="trenutnaStranica < totalPages" (click)="sljedeca()">Next</button>
+  </div>
+</div>
+
+
